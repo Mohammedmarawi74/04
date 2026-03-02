@@ -12,7 +12,7 @@ interface Props {
 }
 
 const SLIDE_THEMES = [
-  { id: 'investor', label: 'المستثمر', bg: '#0D1137', accent: '#00E1C1' },
+  { id: 'investor', label: 'المستثمر', bg: '#050B14', accent: '#00E5CC' },
   { id: 'luxury', label: 'فخامة', bg: '#000000', accent: '#D4AF37' },
   { id: 'growth', label: 'النمو', bg: '#064e3b', accent: '#84cc16' },
   { id: 'trust', label: 'الثقة', bg: '#0f172a', accent: '#38bdf8' },

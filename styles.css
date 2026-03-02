@@ -905,7 +905,7 @@
   position: relative;
   overflow: hidden;
   user-select: none;
-  background-color: #0D1137;
+  background-color: #050B14;
   font-family: 'IBM Plex Sans Arabic', sans-serif;
   direction: rtl;
 }
@@ -1016,7 +1016,7 @@
 
 .poster-default-logo-subtitle {
   font-size: 9px;
-  color: #00E1C1;
+  color: #00E5CC;
   letter-spacing: 0.1em;
   line-height: 1;
   font-weight: 500;
@@ -1028,14 +1028,14 @@
 .poster-logo-box {
   width: 40px;
   height: 40px;
-  background-color: #0D1137;
+  background-color: #050B14;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #00E1C1;
+  border: 1px solid #00E5CC;
   box-shadow: 0 0 15px rgba(0, 225, 193, 0.2);
-  color: #00E1C1;
+  color: #00E5CC;
 }
 
 .poster-content-area {
@@ -1121,7 +1121,7 @@
 .poster-highlight-text {
   position: relative;
   z-index: 20;
-  color: #0D1137;
+  color: #050B14;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -1220,7 +1220,7 @@
   width: 12px;
   height: 12px;
   transform: rotate(180deg);
-  color: #00E1C1;
+  color: #00E5CC;
 }
 
 .poster-border-overlay {

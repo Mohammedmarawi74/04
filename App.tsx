@@ -13,9 +13,9 @@ const THEMES = {
     '--text-primary': '#1e293b',
     '--text-secondary': '#64748b',
     '--border': '#e2e8f0',
-    '--accent-primary': '#0D1137',
+    '--accent-primary': '#050B14',
     '--accent-text': '#ffffff',
-    '--highlight': '#00E1C1',
+    '--highlight': '#00E5CC',
     '--button-hover': '#e2e8f0'
   },
   dark: {
@@ -63,8 +63,8 @@ const createNewSlide = (id: string): Slide => ({
   highlightText: "قصتك",
   subjectImageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
   logoUrl: "",
-  backgroundColor: "#0D1137",
-  accentColor: "#00E1C1",
+  backgroundColor: "#050B14",
+  accentColor: "#00E5CC",
   layout: 'center',
   showSwipeIndicator: true,
   showSlideNumber: true,
@@ -83,8 +83,8 @@ export default function App() {
         highlightText: "المال",
         subjectImageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
         logoUrl: "",
-        backgroundColor: "#0D1137",
-        accentColor: "#00E1C1",
+        backgroundColor: "#050B14",
+        accentColor: "#00E5CC",
         layout: 'center',
         showSwipeIndicator: true,
         showSlideNumber: true,
@@ -284,7 +284,7 @@ export default function App() {
                 }`}
               >
                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${s.subjectImageUrl})` }}></div>
-                 <div className="absolute inset-0 bg-[#0D1137]/80 flex items-center justify-center backdrop-blur-[1px]">
+                 <div className="absolute inset-0 bg-[#050B14]/80 flex items-center justify-center backdrop-blur-[1px]">
                     <span className={`text-xl font-bold text-white ${carousel.activeIndex === i ? 'text-[var(--highlight)]' : ''}`}>{i + 1}</span>
                  </div>
               </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Slide } from '../types';
+import React from "react";
+import { Slide } from "../types";
 
 interface Props {
   slide: Slide;
@@ -9,7 +9,10 @@ interface Props {
 
 const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
   const renderSubheadline = () => {
-    if (!slide.highlightText || !slide.subheadline.includes(slide.highlightText)) {
+    if (
+      !slide.highlightText ||
+      !slide.subheadline.includes(slide.highlightText)
+    ) {
       return slide.subheadline;
     }
     const parts = slide.subheadline.split(slide.highlightText);
@@ -17,12 +20,14 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
       <>
         {parts[0]}
         <span className="relative inline-block px-2 mx-1 poster-highlight">
-           {/* Medium (500) for highlighted text. Removed italic for precise Arabic rendering. */}
-           <span className="relative z-20 text-[#0D1137] font-medium leading-tight">{slide.highlightText}</span>
-           <div 
+          {/* Medium (500) for highlighted text. Removed italic for precise Arabic rendering. */}
+          <span className="relative z-20 text-[#050B14] font-medium leading-tight">
+            {slide.highlightText}
+          </span>
+          <div
             className="absolute inset-0 -skew-x-12 z-10 scale-105 shadow-sm mix-blend-hard-light"
             style={{ backgroundColor: slide.accentColor }}
-           ></div>
+          ></div>
         </span>
         {parts[1]}
       </>
@@ -30,7 +35,10 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
   };
 
   return (
-    <div className="w-full h-full relative overflow-hidden select-none bg-[#0D1137] font-['IBM_Plex_Sans_Arabic'] poster-root" dir="rtl">
+    <div
+      className="w-full h-full relative overflow-hidden select-none bg-[#050B14] font-['IBM_Plex_Sans_Arabic'] poster-root"
+      dir="rtl"
+    >
       {/* Dynamic CSS Style Injection */}
       <style>{slide.customCss}</style>
 
@@ -38,7 +46,7 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
       <div
         className="absolute inset-0 transition-all duration-1000 poster-bg"
         style={{
-          background: `radial-gradient(circle at ${index % 2 === 0 ? '20%' : '80%'} 30%, ${slide.backgroundColor} 0%, #090b24 100%)`
+          background: `radial-gradient(circle at ${index % 2 === 0 ? "20%" : "80%"} 30%, ${slide.backgroundColor} 0%, #02050a 100%)`,
         }}
       ></div>
 
@@ -55,7 +63,8 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
               key={i}
               className="flex-1 h-full transition-all duration-300"
               style={{
-                backgroundColor: i <= index ? slide.accentColor : 'rgba(255,255,255,0.1)'
+                backgroundColor:
+                  i <= index ? slide.accentColor : "rgba(255,255,255,0.1)",
               }}
             ></div>
           ))}
@@ -66,12 +75,16 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
       {slide.showSlideNumber && (
         <div className="absolute top-10 left-8 z-50 poster-number">
           <div className="flex flex-col items-start">
-            <span className="text-4xl font-black leading-none" style={{ color: slide.accentColor }}>
-              {String(index + 1).padStart(2, '0')}
+            <span
+              className="text-4xl font-black leading-none"
+              style={{ color: slide.accentColor }}
+            >
+              {String(index + 1).padStart(2, "0")}
             </span>
             <div className="h-[1px] w-8 my-2 bg-white/20"></div>
             <span className="text-[10px] font-medium tracking-widest text-white/50 uppercase font-sans">
-              Slide {String(index + 1).padStart(2, '0')} of {String(total).padStart(2, '0')}
+              Slide {String(index + 1).padStart(2, "0")} of{" "}
+              {String(total).padStart(2, "0")}
             </span>
           </div>
         </div>
@@ -80,20 +93,37 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
       {/* 5. Branding */}
       <div className="absolute top-10 right-8 flex items-center gap-3 z-50 poster-logo-container">
         {slide.logoUrl ? (
-          <img src={slide.logoUrl} alt="Logo" className="h-12 w-auto max-w-[120px] object-contain drop-shadow-xl poster-logo" />
+          <img
+            src={slide.logoUrl}
+            alt="Logo"
+            className="h-12 w-auto max-w-[120px] object-contain drop-shadow-xl poster-logo"
+          />
         ) : (
           <div className="poster-default-logo">
             <div className="text-right">
-              <div className="text-[12px] font-black tracking-widest leading-none text-white uppercase mb-1 font-sans">Al-Investor</div>
-              <div className="text-[9px] text-[#00E1C1] tracking-widest leading-none font-medium uppercase opacity-90 font-sans">Pro Studio</div>
+              <div className="text-[12px] font-black tracking-widest leading-none text-white uppercase mb-1 font-sans">
+                Al-Investor
+              </div>
+              <div className="text-[9px] text-[#00E5CC] tracking-widest leading-none font-medium uppercase opacity-90 font-sans">
+                Pro Studio
+              </div>
             </div>
 
             {/* Logo Container */}
-            <div className="w-10 h-10 bg-[#0D1137] rounded-lg flex items-center justify-center border border-[#00E1C1] shadow-[0_0_15px_rgba(0,225,193,0.2)] text-[#00E1C1]">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                 <polyline points="17 6 23 6 23 12"></polyline>
-               </svg>
+            <div className="w-10 h-10 bg-[#050B14] rounded-lg flex items-center justify-center border border-[#00E5CC] shadow-[0_0_15px_rgba(0,229,204,0.2)] text-[#00E5CC]">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
             </div>
           </div>
         )}
@@ -101,9 +131,7 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
 
       {/* 7. Subject Image with Depth Effect - Lower z-index */}
       <div className="absolute bottom-0 w-full h-[45%] flex justify-center items-end z-10 pointer-events-none poster-image-container">
-        <div
-          className="absolute top-0 left-0 right-0 h-[50%] bg-gradient-to-b from-transparent via-black/15 to-black/40 z-10"
-        ></div>
+        <div className="absolute top-0 left-0 right-0 h-[50%] bg-gradient-to-b from-transparent via-black/15 to-black/40 z-10"></div>
         <img
           src={slide.subjectImageUrl}
           alt="Subject"
@@ -112,35 +140,59 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
       </div>
 
       {/* 6. Main Content Area - Higher z-index than image */}
-      <div className={`absolute inset-x-0 top-0 flex flex-col z-30 p-8 pt-24 justify-start ${
-        slide.layout === 'center' ? 'items-center text-center' :
-        slide.layout === 'right' ? 'items-start text-right' : 'items-end text-left'
-      }`}>
+      <div
+        className={`absolute inset-x-0 top-0 flex flex-col z-30 p-8 pt-24 justify-start ${
+          slide.layout === "center"
+            ? "items-center text-center"
+            : slide.layout === "right"
+              ? "items-start text-right"
+              : "items-end text-left"
+        }`}
+      >
         <div className="max-w-[85%]">
-           <div className="inline-flex items-center gap-2 mb-4 opacity-80">
-              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: slide.accentColor }}></span>
-              <span className="text-[10px] font-bold text-white uppercase tracking-widest font-sans">Financial Insights</span>
-           </div>
+          <div className="inline-flex items-center gap-2 mb-4 opacity-80">
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: slide.accentColor }}
+            ></span>
+            <span className="text-[10px] font-bold text-white uppercase tracking-widest font-sans">
+              Financial Insights
+            </span>
+          </div>
 
-           {/* HEADLINE: Black (900), 36px, Line-height 1.2. Removed tracking-tight for Arabic. */}
-           <h2 className="text-white text-[32px] font-black mb-4 leading-[1.3] drop-shadow-2xl poster-headline">
+          {/* HEADLINE: Black (900), 36px, Line-height 1.2. Removed tracking-tight for Arabic. */}
+          <h2 className="text-white text-[32px] font-black mb-4 leading-[1.3] drop-shadow-2xl poster-headline">
             {slide.headline}
-           </h2>
+          </h2>
 
-           {/* BODY: Regular (400), 18px, Line-height 1.6. */}
-           <div className="text-slate-200 text-[16px] font-normal leading-[1.7] max-w-md drop-shadow-md opacity-95 poster-subheadline">
+          {/* BODY: Regular (400), 18px, Line-height 1.6. */}
+          <div className="text-slate-200 text-[16px] font-normal leading-[1.7] max-w-md drop-shadow-md opacity-95 poster-subheadline">
             {renderSubheadline()}
-           </div>
+          </div>
         </div>
       </div>
 
       {/* 8. Swipe Indicator */}
       {slide.showSwipeIndicator && index < total - 1 && (
         <div className="absolute bottom-8 right-8 z-50 flex items-center gap-2 opacity-80 animate-pulse text-white poster-swipe">
-           <span className="text-[9px] font-bold tracking-[0.2em] uppercase font-sans">Swipe</span>
-           <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center bg-white/5 backdrop-blur-sm">
-              <svg className="w-3 h-3 rotate-180 text-[#00E1C1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"></path></svg>
-           </div>
+          <span className="text-[9px] font-bold tracking-[0.2em] uppercase font-sans">
+            Swipe
+          </span>
+          <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center bg-white/5 backdrop-blur-sm">
+            <svg
+              className="w-3 h-3 rotate-180 text-[#00E5CC]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="3"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+          </div>
         </div>
       )}
 
