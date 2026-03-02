@@ -22,6 +22,13 @@ const SLIDE_THEMES = [
   { id: 'modern', label: 'حداثة', bg: '#1a1a1a', accent: '#f97316' },
 ];
 
+const PRESET_LOGOS = [
+  { id: 'logo-1', src: '/logooo/logo-1.png', label: 'لوغو 1' },
+  { id: 'logo-2', src: '/logooo/logo-2.png', label: 'لوغو 2' },
+  { id: 'logo-3', src: '/logooo/logo-3.png', label: 'لوغو 3' },
+  { id: 'logo-4', src: '/logooo/logo-4.png', label: 'لوغو 4' },
+];
+
 const Sidebar: React.FC<Props> = ({ state, setState, onDownload, isExporting, currentTheme, setTheme }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target as HTMLInputElement;
@@ -245,7 +252,7 @@ const Sidebar: React.FC<Props> = ({ state, setState, onDownload, isExporting, cu
             
             <div>
                <label className="block text-[10px] font-bold text-[var(--text-secondary)] mb-2">شعار الشركة (Logo)</label>
-               <label className="block relative group">
+               <label className="block relative group mb-3">
                 <input type="file" className="hidden" accept="image/*" onChange={handleLogoUpload} />
                 <div className="w-full bg-[var(--bg-panel)] border border-dashed border-[var(--border)] rounded-md p-3 cursor-pointer group-hover:border-[var(--accent-primary)] group-hover:bg-[var(--bg-element)] transition-all flex items-center justify-center gap-2">
                    {state.logoUrl ? (
@@ -260,6 +267,35 @@ const Sidebar: React.FC<Props> = ({ state, setState, onDownload, isExporting, cu
                   </span>
                 </div>
                </label>
+
+               {/* Preset Logos Selector */}
+               <div className="grid grid-cols-4 gap-2 mt-3">
+                 {PRESET_LOGOS.map((logo) => {
+                   const isActive = state.logoUrl === logo.src;
+                   return (
+                     <button
+                       key={logo.id}
+                       onClick={() => setState(prev => ({ ...prev, logoUrl: logo.src }))}
+                       className={`aspect-square rounded-lg transition-all flex items-center justify-center p-3 ${
+                         isActive
+                           ? 'bg-[var(--accent-primary)]/20 shadow-md'
+                           : 'bg-[var(--bg-element)] hover:bg-[var(--accent-primary)]/10'
+                       }`}
+                       title={logo.label}
+                     >
+                       <img src={logo.src} alt={logo.label} className="w-full h-full object-contain" />
+                     </button>
+                   );
+                 })}
+               </div>
+               {state.logoUrl && (
+                 <button
+                   onClick={() => setState(prev => ({ ...prev, logoUrl: '' }))}
+                   className="w-full mt-3 py-2 text-[11px] font-bold text-red-500 hover:bg-red-50 rounded-md transition-all"
+                 >
+                   إزالة اللوغو
+                 </button>
+               )}
             </div>
           </div>
         </section>
