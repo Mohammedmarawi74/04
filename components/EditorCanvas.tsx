@@ -131,7 +131,6 @@ const EditorCanvas: React.FC<Props> = ({ slide, index, total }) => {
 
       {/* 7. Subject Image with Depth Effect - Lower z-index */}
       <div className="absolute bottom-0 w-full h-[45%] flex justify-center items-end z-10 pointer-events-none poster-image-container">
-        <div className="absolute top-0 left-0 right-0 h-[50%] bg-gradient-to-b from-transparent via-black/15 to-black/40 z-10"></div>
         <img
           src={slide.subjectImageUrl}
           alt="Subject"
